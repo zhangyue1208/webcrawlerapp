@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <h1><%= title %></h1>
+</head>
+<body>
+  <p> Welcome to <%= title %></p>
+
+  <div>
+    <ul class="search-box">
+      <form method="get" action="/apps" id="search" enctype="application/x-www-form-urlencoded">
+	    <li>
+	      App Name:
+	        <span>
+	          <input id="name" type="text" name="name" class="name" placeholder="app name" value="" autocomplete="off" />
+	        </span>
+	    </li>
+	    <li>
+	      Categoty:
+	      <span>
+	        <input id="category" type="text" name="category" class="category" placeholder="category" value="" autocomplete="off" />
+	      </span>
+	    </li>
+	    <li>
+	      <button id="searchSubmit" type="submit" value="Search">Search</button>
+	    </li>
+	  </form>
+    </ul>
+  </div>
+</body>
+<footer>
+	
+</footer>
+</html>
