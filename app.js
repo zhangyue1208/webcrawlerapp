@@ -8,12 +8,12 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 
 var routes = require('./routes/index');
-var apps = require('./routes/apps');
+var search = require('./routes/search');
 
 var app = express();
 
 // connect database
-mongoose.connect('mongodb://localhost:27017/scrapy');
+mongoose.connect('mongodb://localhost/scrapy');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/apps', apps);
+app.use('/search', search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

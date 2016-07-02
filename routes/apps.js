@@ -4,26 +4,31 @@ var router = express.Router();
 
 var Apps = require('../models/app');
 var elasticClient = new elasticsearch.Client({  
-    host: 'localhost:9200',
+    host: 'localhost:9300',
     log: 'info'
 });
 
-/* GET users listing. */
+/* GET apps listing. */
 router.get('/', function(req, res, next) {
   console.log(req.param('name'))
-  Apps
-    .find()
-    .exec()
-    .then(function(apps) {
-      res.render('apps', {apps: apps});
-    })
-    .catch(function(err) {
-      res.render('404');
-    });
+  elasticClient.search({
+    "query": { 
+       "match": { "title": "微" }
+    }
+  })
+  .then(function(results) {
+    console.log(results);
+    // res.send(results);
+    res.render('apps', {apps: results.hits.hits});
+  })
+  .catch(function(err) {
+    console.log(err);
+    res.send(err);
+  })
   //res.render('apps', { name: req.param('name') });
 });
 
-/* GET users listing. */
+/* GET apps listing. */
 router.post('/', function(req, res, next) {
 });
 
