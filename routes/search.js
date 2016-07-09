@@ -2,7 +2,6 @@ var express = require('express');
 var elasticsearch = require('elasticsearch');
 var router = express.Router();
 
-
 var client = new elasticsearch.Client({
     host: 'localhost:9200',
     log: 'trace'
@@ -26,7 +25,7 @@ router.get('/', function(req, res, next) {
   })
   .then(function(results) {
     console.log(results);
-    res.render('apps', {apps: results.hits.hits});
+    res.render('apps', {applist: results.hits.hits});
   })
   .catch(function(err) {
     console.log(err);
