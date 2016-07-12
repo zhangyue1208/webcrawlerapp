@@ -1,5 +1,6 @@
-import React, { Component} from 'react'
-var $ = require ('jquery')
+import React, { Component} from 'react';
+import $ from 'jquery';
+//var $ = require ('jquery')
 
 class SearchBox extends Component{
   constructor(props) {
@@ -9,16 +10,19 @@ class SearchBox extends Component{
 
   render (){
   	var total = this.state.name + " " + this.state.cate;
+
     return (
     	<form id="form" name = "form" method = 'get'>
-    	  <div className="search-fields">
-    	    <ul><input type="text" id="name" value={this.state.name} 
-    	                                     onChange={this.onInputChange.bind(this, 'name')} /></ul>
-    	    <ul><input type="text" id="category" value={this.state.cate} 
-    	                                     onChange={this.onInputChange.bind(this, 'cate')} /></ul>
-    	    <ul><input type="submit" id="sub" value = "Submit" onClick={this.onClickEvent.bind(this)} /></ul>
+    	    <div>
+    	    	<input type="text" name="name" value={this.state.name} 
+    	                                       onChange={this.onInputChange.bind(this, 'name')} />
+    	    </div>
+          <div>
+    	      <input type="text" name="category" value={this.state.cate} 
+    	                                     onChange={this.onInputChange.bind(this, 'cate')} />
+          </div>
+    	    <input type="submit" value = "Submit" onClick={this.onClickEvent.bind(this)} />
     	    {total}
-    	  </div>
     	</form>
     );
   }
@@ -31,10 +35,9 @@ class SearchBox extends Component{
 
   onClickEvent(event) {
   	event.preventDefault();
-  	var senddata = "dq"
-    //senddata = $("#form").serialize();
+    var senddata = $("#form").serialize();
     console.log(senddata);
-    console.log("################");
+    
     $.ajax({  
       url:'/search',  
       data: senddata,  

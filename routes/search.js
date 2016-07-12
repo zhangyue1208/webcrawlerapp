@@ -11,14 +11,17 @@ var index = "scrapy";
 var type = "xiaomiapp";
 
 router.get('/', function(req, res, next) {
-  console.log(req.query.name)
+  var data = req.body;
+
+  var name = data['name'] || "";
+  
   client.search({
     index: 'scrapy',
 	  type: 'xiaomiapp',
 	  body: {
 	    query: {
 	      match: {
-	        _all: req.query.name
+	        _all: name
 	      }
 	    }
     }

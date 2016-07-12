@@ -84,6 +84,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _jquery = __webpack_require__(35);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -92,7 +96,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var $ = __webpack_require__(35);
+	//var $ = require ('jquery')
 
 	var SearchBox = function (_Component) {
 	  _inherits(SearchBox, _Component);
@@ -110,31 +114,24 @@
 	    key: 'render',
 	    value: function render() {
 	      var total = this.state.name + " " + this.state.cate;
+
 	      return _react2.default.createElement(
 	        'form',
 	        { id: 'form', name: 'form', method: 'get' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'search-fields' },
-	          _react2.default.createElement(
-	            'ul',
-	            null,
-	            _react2.default.createElement('input', { type: 'text', id: 'name', value: this.state.name,
-	              onChange: this.onInputChange.bind(this, 'name') })
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            null,
-	            _react2.default.createElement('input', { type: 'text', id: 'category', value: this.state.cate,
-	              onChange: this.onInputChange.bind(this, 'cate') })
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            null,
-	            _react2.default.createElement('input', { type: 'submit', id: 'sub', value: 'Submit', onClick: this.onClickEvent.bind(this) })
-	          ),
-	          total
-	        )
+	          null,
+	          _react2.default.createElement('input', { type: 'text', name: 'name', value: this.state.name,
+	            onChange: this.onInputChange.bind(this, 'name') })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement('input', { type: 'text', name: 'category', value: this.state.cate,
+	            onChange: this.onInputChange.bind(this, 'cate') })
+	        ),
+	        _react2.default.createElement('input', { type: 'submit', value: 'Submit', onClick: this.onClickEvent.bind(this) }),
+	        total
 	      );
 	    }
 	  }, {
@@ -148,11 +145,10 @@
 	    key: 'onClickEvent',
 	    value: function onClickEvent(event) {
 	      event.preventDefault();
-	      var senddata = "dq";
-	      //senddata = $("#form").serialize();
+	      var senddata = (0, _jquery2.default)("#form").serialize();
 	      console.log(senddata);
-	      console.log("################");
-	      $.ajax({
+
+	      _jquery2.default.ajax({
 	        url: '/search',
 	        data: senddata,
 	        method: 'GET',
