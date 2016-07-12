@@ -13,7 +13,7 @@ var search = require('./routes/search');
 var app = express();
 
 // connect database
-mongoose.connect('mongodb://localhost/scrapy');
+//mongoose.connect('mongodb://localhost/scrapy');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -1,9 +1,12 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-const App = function() {
-	return <div>Hi!</div>;
+import SearchBox from './components/search-box';
+
+const Index = () => {
+	return (
+      <SearchBox />
+	);
 }
 
-
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<Index />, document.querySelector('.search'));
