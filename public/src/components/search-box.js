@@ -37,14 +37,14 @@ class SearchBox extends Component{
   	event.preventDefault();
     var senddata = $("#form").serialize();
     console.log(senddata);
-    
+
     $.ajax({  
       url:'/search',  
       data: senddata,  
-      method:'GET',  
+      type:'GET',  
       dataType:'json',  
       success: function(data, textStatus, jqXHR){
-      	console.log("sad")
+      	console.log(data)
       }
     }); 
   }

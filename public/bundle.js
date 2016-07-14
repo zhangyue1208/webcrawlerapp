@@ -151,10 +151,10 @@
 	      _jquery2.default.ajax({
 	        url: '/search',
 	        data: senddata,
-	        method: 'GET',
+	        type: 'GET',
 	        dataType: 'json',
 	        success: function success(data, textStatus, jqXHR) {
-	          console.log("sad");
+	          console.log(data);
 	        }
 	      });
 	    }

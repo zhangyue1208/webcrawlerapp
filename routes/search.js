@@ -11,10 +11,10 @@ var index = "scrapy";
 var type = "xiaomiapp";
 
 router.get('/', function(req, res, next) {
-  var data = req.body;
+  var data = req.query;
 
   var name = data['name'] || "";
-  
+
   client.search({
     index: 'scrapy',
 	  type: 'xiaomiapp',
@@ -28,7 +28,8 @@ router.get('/', function(req, res, next) {
   })
   .then(function(results) {
     console.log(results);
-    res.render('apps', {applist: results.hits.hits});
+    res.send(200, JSON.stringify(results.hits.hits));
+    //res.render('apps', {applist: results.hits.hits});
   })
   .catch(function(err) {
     console.log(err);
