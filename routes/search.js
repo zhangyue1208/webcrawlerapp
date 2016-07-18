@@ -27,9 +27,7 @@ router.get('/', function(req, res, next) {
     }
   })
   .then(function(results) {
-    console.log(results);
     res.send(200, JSON.stringify(results.hits.hits));
-    //res.render('apps', {applist: results.hits.hits});
   })
   .catch(function(err) {
     console.log(err);

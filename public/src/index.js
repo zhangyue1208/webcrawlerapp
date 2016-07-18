@@ -1,12 +1,17 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxPromise from 'redux-promise';
 
-import SearchBox from './components/search-box';
+import App from './components/app';
+import reducers from './reducers';
 
-const Index = () => {
-	return (
-      <SearchBox />
-	);
-}
+const createStoreMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
-ReactDOM.render(<Index />, document.querySelector('.search'));
+ReactDOM.render(
+    <Provider store={createStoreMiddleware(reducers)}>
+	  <App />
+	</Provider>
+	, document.querySelector('.container')
+)
