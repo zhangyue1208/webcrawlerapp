@@ -4,7 +4,7 @@ const ROOT_URL = '/search';
 
 export const FETCH_APP = 'FETCH_APP';
 
-export function fetchApp(data) {
+export function fetchApp(data) {  
   const url = `${ROOT_URL}?${data}`; 
   const request = axios.get(url);
 

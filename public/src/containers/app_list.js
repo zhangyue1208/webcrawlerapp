@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import AppListItem from './app_list_item';
+
 class AppList extends Component {
   renderApp(appData){
-    console.log(appData);
+    console.log(appData.length);
     return(
       <tr>
-        <td>{appData[0]._source.title}</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
       </tr>
-    );
+    )
   }
 
   render() {
