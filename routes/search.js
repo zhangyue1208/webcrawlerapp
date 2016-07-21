@@ -14,15 +14,19 @@ router.get('/', function(req, res, next) {
   var data = req.query;
 
   var name = data['name'] || "";
+  var cate = data['category'] || "";
 
   client.search({
     index: 'scrapy',
 	  type: 'xiaomiapp',
 	  body: {
 	    query: {
-	      match: {
-	        _all: name
-	      }
+        bool: {
+          must: [
+            { match: { title: name}},
+            { match: { category: cate}}
+          ]
+        }        
 	    }
     }
   })
