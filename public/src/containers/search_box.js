@@ -10,7 +10,7 @@ export default class SearchBox extends Component{
 
   	this.state = {name:'', cate:'', apps:props.apps};
   }
-  
+
 
   onInputChange(attr, e) {
     var change = {};

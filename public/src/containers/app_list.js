@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import AppListItem from './app_list_item';
 
 class AppList extends Component {
   renderApp(appData){
-    console.log(appData.length);
-    return(
-      <tr>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
+    return (
+      <tr key={appData._id}>
+        <td>{appData._source.title}</td>
+        <td>{appData._source.category}</td>
+        <td>{appData._source.rating}</td>
+        <td>{appData._source.appurl}</td>
       </tr>
     )
   }
@@ -35,8 +33,8 @@ class AppList extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return { app: state.app };
+function mapStateToProps({app}){
+  return { app };
 }
 
 export default connect(mapStateToProps)(AppList);
