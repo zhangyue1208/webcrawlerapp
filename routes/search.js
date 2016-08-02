@@ -2,6 +2,8 @@ var express = require('express');
 var elasticsearch = require('elasticsearch');
 var router = express.Router();
 
+var Apps = require('../models/app');
+
 var client = new elasticsearch.Client({
     host: 'localhost:9200',
     log: 'trace'
@@ -16,27 +18,25 @@ router.get('/', function(req, res, next) {
   var name = data['name'] || "";
   var cate = data['category'] || "";
 
-  client.search({
-    index: 'scrapy',
-	  type: 'xiaomiapp',
-	  body: {
+  console.log(name);
+
+  Apps.search({
 	    query: {
         bool: {
-          must: [
+          should: [
             { match: { title: name}},
             { match: { category: cate}}
           ]
         }        
 	    }
+  },
+  function(err, results) {
+    if (err) {
+      console.log(err);
     }
-  })
-  .then(function(results) {
+    console.log("fwfew");
     res.send(200, JSON.stringify(results.hits.hits));
-  })
-  .catch(function(err) {
-    console.log(err);
-    res.send(err);
-  })
+  });
 });
 
 module.exports = router;

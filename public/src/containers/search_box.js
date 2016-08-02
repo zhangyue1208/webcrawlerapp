@@ -1,8 +1,9 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchApp } from '../actions/index';
 import $ from 'jquery';
+
 
 export default class SearchBox extends Component{
   constructor(props) {
@@ -23,16 +24,6 @@ export default class SearchBox extends Component{
     event.preventDefault();
     var senddata = $("#form").serialize();
     this.props.fetchApp(senddata);
-
-    $.ajax({  
-      url:'/search',  
-      data: senddata,  
-      type:'GET',  
-      dataType:'json',  
-      success: function(data, textStatus, jqXHR){
-        this.setState({apps:data});
-      }.bind(this)
-    }); 
   }
 
 

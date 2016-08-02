@@ -23750,16 +23750,6 @@
 	      event.preventDefault();
 	      var senddata = (0, _jquery2.default)("#form").serialize();
 	      this.props.fetchApp(senddata);
-
-	      _jquery2.default.ajax({
-	        url: '/search',
-	        data: senddata,
-	        type: 'GET',
-	        dataType: 'json',
-	        success: function (data, textStatus, jqXHR) {
-	          this.setState({ apps: data });
-	        }.bind(this)
-	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -35361,6 +35351,7 @@
 	function mapStateToProps(_ref) {
 	  var app = _ref.app;
 
+	  console.log(app);
 	  return { app: app };
 	}
 

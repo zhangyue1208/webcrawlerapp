@@ -34,6 +34,7 @@ class AppList extends Component {
 }
 
 function mapStateToProps({app}){
+  console.log(app);
   return { app };
 }
 
