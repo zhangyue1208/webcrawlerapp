@@ -29,21 +29,43 @@ export default class SearchBox extends Component{
 
   render (){
     return (
-    	<form id="form" name = "form" method = 'get'>
-    	    <div>
-    	    	<input 
-              type="text" 
-              name="name"
-              value={this.state.name} 
-    	        onChange={this.onInputChange.bind(this, 'name')} />
-    	    </div>
-          <div>
-    	      <input type="text" name="category" value={this.state.cate} 
-    	                                     onChange={this.onInputChange.bind(this, 'cate')} />
-          </div>
-    	    <input className="btn btn-secondary" type="submit" value = "Submit" 
-                                           onClick={this.onClickEvent.bind(this)} />
-    	</form>
+      <div className="col-md-4">
+      	<form id="form" name="form" method = 'get'>
+      	    <div className="form-group row">
+              <label
+                className="col-sm-4 col-form-label"
+                htmlFor="app-name">App Name</label>
+              <div className="col-sm-8">
+        	    	<input
+                  id="app-name"
+                  className="form-control"
+                  type="text" 
+                  name="name"
+                  value={this.state.name} 
+        	        onChange={this.onInputChange.bind(this, 'name')} />
+              </div>
+      	    </div>
+            <div className="form-group row">
+              <label
+                className="col-sm-4 col-form-label"
+                htmlFor="category">Category</label>
+              <div className="col-sm-8">
+        	      <input
+                  id="category"
+                  className="form-control"
+                  type="text"
+                  name="category"
+                  value={this.state.cate} 
+                  onChange={this.onInputChange.bind(this, 'cate')} />
+              </div>
+            </div>
+      	    <input
+              className="btn btn-primary"
+              type="submit"
+              value = "Submit" 
+              onClick={this.onClickEvent.bind(this)} />
+      	</form>
+      </div>
     );
   }
 }

@@ -34,7 +34,6 @@ router.get('/', function(req, res, next) {
     if (err) {
       console.log(err);
     }
-    console.log("fwfew");
     res.send(200, JSON.stringify(results.hits.hits));
   });
 });

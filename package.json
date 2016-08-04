@@ -18,8 +18,10 @@
     "mongoosastic": "^4.0.2",
     "mongoose": "^4.5.2",
     "morgan": "~1.7.0",
+    "redux": "^3.5.2",
     "redux-promise": "^0.5.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "watch": "^0.19.1"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
